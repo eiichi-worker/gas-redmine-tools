@@ -50,6 +50,54 @@ function getIssue (issueId, include) {
 }
 
 /**
+ * issueリストを取得
+ */
+function getIssueList (params) {
+  const METHOD = 'GET'
+
+  var paramString = '?'
+  if (params) {
+    for(var key in params) {
+      var sep = paramString == '?' ? '' : '&'
+      paramString += (sep + key + '=' + params[key])
+    }
+  } else {
+    paramString = ''
+  }
+
+  const PATH = '/issues.json' + paramString
+
+  var result = send_(METHOD, PATH, {})
+  Logger.log(JSON.parse(result.getContentText()))
+
+  return result
+}
+
+/**
+ * 工数リストを取得
+ */
+function getTimeEntriesList (params) {
+  const METHOD = 'GET'
+
+  var paramString = '?'
+  if (params) {
+    for(var key in params) {
+      var sep = paramString == '?' ? '' : '&'
+      paramString += (sep + key + '=' + params[key])
+    }
+  } else {
+    paramString = ''
+  }
+
+  const PATH = '/time_entries.json' + paramString
+
+  var result = send_(METHOD, PATH, {})
+  Logger.log(JSON.parse(result.getContentText()))
+
+  return result
+}
+
+/**
  * APIを叩く 共通処理
  * @param {*} method 
  * @param {*} path 
