@@ -114,7 +114,7 @@ function getVersionList (versionId, params) {
     paramString = ''
   }
 
-  const PATH = '/' + versionId + '/versions.json' + paramString
+  const PATH = '/projects/' + versionId + '/versions.json' + paramString
 
   var result = send_(METHOD, PATH, {})
   Logger.log(JSON.parse(result.getContentText()))
