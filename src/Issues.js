@@ -97,6 +97,31 @@ function getTimeEntriesList (params) {
   return result
 }
 
+
+/**
+ * バージョンリストを取得
+ */
+function getVersionList (versionId, params) {
+  const METHOD = 'GET'
+
+  var paramString = '?'
+  if (params) {
+    for(var key in params) {
+      var sep = paramString == '?' ? '' : '&'
+      paramString += (sep + key + '=' + params[key])
+    }
+  } else {
+    paramString = ''
+  }
+
+  const PATH = '/' + versionId + '/versions.json' + paramString
+
+  var result = send_(METHOD, PATH, {})
+  Logger.log(JSON.parse(result.getContentText()))
+
+  return result
+}
+
 /**
  * APIを叩く 共通処理
  * @param {*} method 
