@@ -122,6 +122,57 @@ function getVersionList (versionId, params) {
   return result
 }
 
+
+/**
+ * ユーザーリストを取得
+ */
+function getUserList (params) {
+  const METHOD = 'GET'
+
+  var paramString = '?'
+  if (params) {
+    for(var key in params) {
+      var sep = paramString == '?' ? '' : '&'
+      paramString += (sep + key + '=' + params[key])
+    }
+  } else {
+    paramString = ''
+  }
+
+  const PATH = '/users.json' + paramString
+
+  var result = send_(METHOD, PATH, {})
+  Logger.log(JSON.parse(result.getContentText()))
+
+  return result
+}
+
+
+/**
+ * プロジェクトリストを取得
+ */
+function getProjectList (params) {
+  const METHOD = 'GET'
+
+  var paramString = '?'
+  if (params) {
+    for(var key in params) {
+      var sep = paramString == '?' ? '' : '&'
+      paramString += (sep + key + '=' + params[key])
+    }
+  } else {
+    paramString = ''
+  }
+
+  const PATH = '/projects.json' + paramString
+
+  var result = send_(METHOD, PATH, {})
+  Logger.log(JSON.parse(result.getContentText()))
+
+  return result
+}
+
+
 /**
  * APIを叩く 共通処理
  * @param {*} method 
