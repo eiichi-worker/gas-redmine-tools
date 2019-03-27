@@ -1,4 +1,4 @@
-# Google Apps Script 用の Redmine ライブラリ
+# Google Apps Script 用の Redmine ライブラリ！
 
 スクリプト ID
 
